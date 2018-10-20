@@ -1,0 +1,32 @@
+{% extends "todo/layout.html" %}
+{% block content %}
+<legend class="border-bottom mb-4"> To Do Task {{ task.id }}</legend>
+
+{% if tasks %}
+{% for task in tasks %}
+<article class="media content-section">
+
+    <div class="media-body">
+        <h2> {{ task.title}}</h2>
+        <div class="article-metadata">
+            <small class="text-muted">Description: {{ task.description }}</small>
+            <br>
+            <small class="text-muted">Status: {{ task.status }}</small>
+            <br>
+            <small class="text-muted">ToDo Time: {{ task.todo_time }}</small>
+            <br>
+            <small class="text-muted">Created at: {{ task.created_at }}</small>
+            <br>
+            <small class="text-muted">Updated at: {{ task.updated_at }}</small>
+            <br>
+            <small class="text-muted">Deleted at: {{ task.deleted_at }}</small>
+            <br>
+        </div>
+    </div>
+
+</article>
+{% endfor %}
+{% else %}
+No Task found
+{% endif %}
+{% endblock content%}

@@ -1,0 +1,28 @@
+{% extends "todo/layout.html" %}
+{% block content %}
+<legend class="border-bottom mb-4"> To Do List</legend>
+<div class="navbar-nav">
+    <a class="nav-item nav-link" href="{% url 'create' %}">Create</a>
+</div>
+{% if tasks %}
+{% for task in tasks %}
+<article class="media content-section">
+
+    <div class="media-body">
+        <h2> {{ task.title}}</h2>
+        <div class="article-metadata">
+            <small class="text-muted">{{ task.description }}</small>
+            <br>
+            <small class="text-muted">{{ task.status }} |</small>
+            <small class="text-muted">{{ task.todo_time }}</small>
+            <br>
+            <a class="mr-2" href="{% url 'update' task.id %}">Update</a>
+            <a class="mr-2" href="{% url 'delete' task.id %}">Delete</a>
+
+        </div>
+    </div>
+
+</article>
+{% endfor %}
+{% endif %}
+{% endblock content%}

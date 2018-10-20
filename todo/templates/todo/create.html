@@ -1,0 +1,26 @@
+{% extends "todo/layout.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4"> To Do List</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Save</button>
+        </div>
+
+    </form>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepickerinput').datetimepicker({
+            inline: true,
+            sideBySide: true,
+            format: 'YYYY-MM-DD HH:MM:SS'
+        });
+    });
+</script>
+{% endblock content %}
